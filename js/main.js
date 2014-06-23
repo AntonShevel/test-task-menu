@@ -9,6 +9,7 @@ object Menu:
 grunt!
  https://github.com/xxllexx/data-binding/blob/master/Gruntfile.js
  */
+//
 
 // get elements
 var oReq = new XMLHttpRequest();
@@ -27,15 +28,16 @@ function iterate(items) {
 
     var menu = window.document.createDocumentFragment();
 
-    function makeDom(items, parent, container) {
+    function makeDom(items, parent, container ,level) {
         var item,
             allowed = false,
             ul = window.document.createElement('ul'),
             li,
-            a,
-            i;
+            a;
 
-        for (i = 0; items[i]; i += 1) {
+        ul.className = 'level-'+level;
+
+        for (var i = 0; items[i]; i += 1) {
             item = items[i];
 
             if (parent && item.parent === parent || !parent && !item.parent) {
@@ -45,9 +47,9 @@ function iterate(items) {
                 a.href = item.url;
                 a.innerHTML = item.name;
                 li.appendChild(a);
-                makeDom(items, item.id, li);
+                if (makeDom(items, item.id, li, level+1))
+                    li.className='has-sub';
                 ul.appendChild(li);
-//                console.log(value.name, value.parent, value.id);
 
             }
         }
@@ -55,8 +57,9 @@ function iterate(items) {
         if (allowed)
             container.appendChild(ul);
 
+        return allowed;
     }
-    makeDom(items, false, menu);
+    makeDom(items, false, menu, 0);
 
-    window.document.getElementById('container').appendChild(menu);
+    window.document.getElementById('menu').appendChild(menu);
 }

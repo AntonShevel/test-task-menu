@@ -1,0 +1,11 @@
+{
+    "name": "test-task",
+    "version": "0.0.1",
+    "dependencies": {
+        "grunt-contrib-jshint": "latest",
+        "grunt-contrib-concat": "latest",
+        "grunt-contrib-less": "latest",
+        "grunt-contrib-watch": "latest",
+        "grunt-contrib-connect": "latest"
+    }
+}
