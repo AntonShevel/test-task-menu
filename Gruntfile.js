@@ -12,7 +12,7 @@ module.exports = function(grunt) {
             },
             dev: {
                 src: [
-                    'js/main.js'
+                    'js/menu.js'
                 ]
             }
         },
