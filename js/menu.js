@@ -6,13 +6,22 @@ function Menu(element, items) {
     this.init();
 }
 
+/**
+ * init menu
+ */
 Menu.prototype.init = function() {
     var menu = window.document.createDocumentFragment();
     this.makeDom(false, menu, 0);
     this.element.appendChild(menu);
 };
 
-
+/**
+ * make dom recursively
+ * @param parent
+ * @param container
+ * @param level
+ * @returns {boolean}
+ */
 Menu.prototype.makeDom = function(parent, container, level) {
     var item,
         allowed = false,

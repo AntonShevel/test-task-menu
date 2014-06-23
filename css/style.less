@@ -43,9 +43,9 @@ body{
 }
 
 .menu{
-  .rounded(2px);
-  padding: 1px;
-  background: @border-outer-color;
+//  .rounded(2px);
+//  padding: 1px;
+//  background: @border-outer-color;
 
   margin: 20px;
   ul{
@@ -59,10 +59,14 @@ body{
     position: relative;
     display:block;
     text-transform: uppercase;
-
     height: 52px;
     width: 100%;
+
+    -webkit-box-shadow: 0 0 0 1px @border-outer-color;
+    box-shadow: 0 0 0 1px @border-outer-color;
+    .rounded(2px);
     background: @bg-color;
+
     &>li{
       display: block;
       position: relative;
