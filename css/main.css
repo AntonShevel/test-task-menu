@@ -51,35 +51,37 @@ textarea {
    Style
    ========================================================================== */
 .corner {
+  content: '';
   width: 0;
   height: 0;
   border-style: solid;
   -webkit-transform: rotate(360deg);
   position: relative;
-  top: 10px;
+  display: block;
 }
 .corner-left {
+  content: '';
   width: 0;
   height: 0;
   border-style: solid;
   -webkit-transform: rotate(360deg);
   position: relative;
-  top: 10px;
+  display: block;
   border-width: 10px 0 0 10px;
   border-color: transparent transparent transparent #414141;
 }
 .corner-right {
+  content: '';
   width: 0;
   height: 0;
   border-style: solid;
   -webkit-transform: rotate(360deg);
   position: relative;
-  top: 10px;
+  display: block;
   border-width: 0 10px 10px 0;
   border-color: transparent #414141 transparent transparent;
 }
 body {
-  font-family: 'Oswald', sans-serif;
   background: #F5F5F5;
 }
 .container {
@@ -95,54 +97,130 @@ body {
   margin: 20px;
 }
 .menu ul {
+  list-style: none;
   padding: 0;
   margin: 0;
-  list-style: none;
+}
+.menu > ul {
   position: relative;
   display: block;
   text-transform: uppercase;
-}
-.menu > ul {
   height: 52px;
   width: 100%;
   background: #383b37;
 }
-.menu li {
+.menu > ul > li {
+  display: block;
+  position: relative;
   float: left;
-  list-style: none;
-  display: list-item;
+  margin: 0;
+  padding: 0;
+  border-right: 1px solid #0b0b0b;
+}
+.menu > ul > li > a {
+  border-top: 1px solid #555455;
+  border-bottom: 1px solid #555455;
+  border-right: 1px solid #555455;
+  font-family: 'Oswald', sans-serif;
+  -webkit-transition: background 0.25s ease-out;
+  -moz-transition: background 0.25s ease-out;
+  -o-transition: background 0.25s ease-out;
+  transition: background 0.25s ease-out;
+  text-shadow: 0 1px 1px #000000;
+  padding: 14px 20px;
+}
+.menu > ul > li > a:hover {
+  background: #292d29;
+}
+.menu > ul > li:hover > a {
+  background: #292d29;
+}
+.menu > ul > li:first-child {
+  border-left: 1px solid #555455;
 }
 .menu a {
   display: block;
-  padding: 15px 20px;
   color: #ffffff;
-  background: #383b37;
   font-size: 16px;
   text-decoration: none;
 }
 .menu a:hover {
-  background-color: #292d29;
+  color: #ffffff;
 }
 .menu ul ul {
-  display: none;
   position: absolute;
   top: 52px;
+  left: 9999px;
+  opacity: 0;
+  -webkit-transition: opacity 0.25s ease , top 0.25s ease;
+  -moz-transition: opacity 0.25s ease , top 0.25s ease;
+  -o-transition: opacity 0.25s ease , top 0.25s ease;
+  transition: opacity 0.25s ease , top 0.25s ease;
   text-transform: none;
-  z-index: 2;
+  z-index: 1000;
 }
-.menu ul li:hover > ul {
-  display: list-item;
+.menu ul li.has-sub:hover > ul {
+  left: auto;
+  top: 52px;
+  opacity: 1;
+}
+.menu ul li.has-sub:hover > ul:before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  -webkit-transform: rotate(360deg);
+  position: relative;
+  display: block;
+  border-width: 10px 0 0 10px;
+  border-color: transparent transparent transparent #414141;
+  margin-top: 4px;
 }
 .menu ul ul li {
-  width: 170px;
-  float: none;
+  -webkit-box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.5);
   position: relative;
-  border-bottom: none;
+}
+.menu ul ul li a {
+  width: 140px;
+  padding: 10px 20px;
+  background: #414141;
+  font-size: 12px;
+  padding-bottom: 0;
+  color: #b2bebf;
+}
+.menu ul ul li a:after {
+  content: '';
+  display: block;
+  margin-top: 10px;
+  border-bottom: 1px dotted #555455;
+}
+.menu ul ul ul {
+  padding-left: 15px;
 }
 .menu ul ul ul li {
   position: relative;
-  top: -52px;
-  left: 170px;
+}
+.menu ul ul li.has-sub:hover > ul {
+  left: 180px;
+  top: 0;
+  opacity: 1;
+}
+.menu ul ul li.has-sub:hover > ul:before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  -webkit-transform: rotate(360deg);
+  position: relative;
+  display: block;
+  border-width: 0 10px 10px 0;
+  border-color: transparent #414141 transparent transparent;
+  margin: 0;
+  position: absolute;
+  left: 5px;
+  top: 0;
 }
 /* ==========================================================================
    Helper classes
